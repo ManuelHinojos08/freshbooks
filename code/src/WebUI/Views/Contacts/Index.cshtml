@@ -1,0 +1,44 @@
+﻿@using Application.Contacts.Models
+@model IList<ContactDto>
+@{
+    ViewData["Title"] = "Contactos";
+}
+<h1>Contactos</h1>
+<a class="btn btn-primary mb-3" role="button" asp-action="Create" >
+    Crear Nuevo
+</a>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Phone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Phone)
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
