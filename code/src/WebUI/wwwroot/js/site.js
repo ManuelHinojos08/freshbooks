@@ -1,4 +1,43 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(document).ready(function () {
+    $('.pageable-table').DataTable({
+        stateSave: true
+    });
+});
 
-// Write your JavaScript code.
+const DisplaySuccess = function () {
+    CloseAllAlertMessages();
+    $("#successAlert").fadeTo(3500, 750).slideUp(750, function () {
+        $("#successAlert").slideUp(750);
+    });
+};
+
+const DisplaySaveSuccess = function () {
+    CloseAllAlertMessages();
+    $("#saveSuccessAlert").fadeTo(3500, 750).slideUp(750, function () {
+        $("#saveSuccessAlert").slideUp(750);
+    });
+};
+
+const DisplayError = function (msg) {
+    CloseAllAlertMessages();
+    $('#error-message').html(msg);
+    $("#errorAlert").fadeTo(3500, 750);
+};
+
+const DisplayLoadingMessage = function (msg) {
+    CloseAllAlertMessages();
+    $("#savingAlert").fadeTo(3500, 750);
+};
+
+const CloseLoadingMessage = function (msg) {
+    $("#savingAlert").fadeOut(750);
+};
+
+const CloseAllAlertMessages = function () {
+    $('#errorAlert').hide();
+    $('#successAlert').hide();
+    $('#saveSuccessAlert').hide();
+    $('#savingAlert').hide();
+};
+
+CloseAllAlertMessages();

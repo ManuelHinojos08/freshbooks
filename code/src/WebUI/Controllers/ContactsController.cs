@@ -1,5 +1,8 @@
-﻿using Application.Contacts.Queries;
+﻿using Application.Contacts.Commands;
+using Application.Contacts.Queries;
 using Microsoft.AspNetCore.Mvc;
+using WebUI.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace WebUI.Controllers;
 
@@ -13,9 +16,10 @@ public class ContactsController : CustomControllerBase
     }
 
     // GET: ContactsController/Details/5
-    public ActionResult Details(int id)
+    public async Task<IActionResult> Details(int id)
     {
-        return View();
+        var contact = await Mediator.Send(new GetContactDetailsQuery() { Id = id });
+        return View(contact);
     }
 
     // GET: ContactsController/Create
@@ -27,57 +31,36 @@ public class ContactsController : CustomControllerBase
     // POST: ContactsController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Create(IFormCollection collection)
+    public async Task<IActionResult> Create(CreateContactCommand command)
     {
-        try
-        {
-            return RedirectToAction(nameof(Index));
-        }
-        catch
-        {
-            return View();
-        }
+        await Mediator.Send(command);
+        TempData[WebConsts.SavedKey] = $"{true}".ToLower();
+        return RedirectToAction(nameof(Index));
     }
 
     // GET: ContactsController/Edit/5
-    public ActionResult Edit(int id)
+    public async Task<IActionResult> Edit(int id)
     {
-        return View();
+        var contact = await Mediator.Send(new GetContactDetailsQuery() { Id = id });
+        var model = Mapper.Map<UpdateContactCommand>(contact);
+        return View(model);
     }
 
     // POST: ContactsController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, IFormCollection collection)
+    public async Task<IActionResult> Edit(UpdateContactCommand command)
     {
-        try
-        {
-            return RedirectToAction(nameof(Index));
-        }
-        catch
-        {
-            return View();
-        }
+        await Mediator.Send(command);
+        TempData[WebConsts.SavedKey] = $"{true}".ToLower();
+        return RedirectToAction("Index");
     }
 
     // GET: ContactsController/Delete/5
-    public ActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        return View();
-    }
-
-    // POST: ContactsController/Delete/5
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id, IFormCollection collection)
-    {
-        try
-        {
-            return RedirectToAction(nameof(Index));
-        }
-        catch
-        {
-            return View();
-        }
+        await Mediator.Send(new DeleteContactCommand() { Id = id });
+        TempData[WebConsts.SavedKey] = $"{true}".ToLower();
+        return RedirectToAction("Index");
     }
 }

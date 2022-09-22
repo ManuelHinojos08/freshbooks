@@ -1,0 +1,49 @@
+﻿<section>
+    @* Success alert *@
+    <div id="successAlert" class="alert alert-success alert-dismissible fade fixed-bottom" role="alert">
+        <h5 class="text-left alert-heading">
+            <i class="fa-solid fa-circle-check"></i>
+            ¡Tarea completada con éxito!
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <p>
+            <br /><br />
+        </p>
+    </div>
+    @* Save Success alert *@
+    <div id="saveSuccessAlert" class="alert alert-success alert-dismissible fade fixed-bottom" role="alert">
+        <h5 class="text-left alert-heading">
+            <i class="fa-solid fa-circle-check"></i>
+            ¡Tus cambios se guardaron con éxito!
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <p>
+            <br /><br />
+        </p>
+    </div>
+    @* Error alert *@
+    <div id="errorAlert" class="alert alert-danger alert-dismissible fade fixed-bottom" role="alert">
+        <h5 class="text-left alert-heading">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            ¡Algo salió mal!
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <p>
+        <p id="error-message" class="text-left">
+        </p>
+    </div>
+    @* Saving alert *@
+    <div id="savingAlert" class="alert alert-primary fixed-bottom" role="alert">
+        <h5 class="text-left alert-heading">
+            Espere, su tarea se está procesando.
+            &nbsp;&nbsp;
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </h5>
+        <p class="text-left">
+            No cierre la página, este mensaje se cerrará automáticamente una vez que se complete el proceso.<br />
+            Si este mensaje no desaparece, comuníquese con el soporte técnico ya que es posible que su información no se haya guardado.
+        </p>
+    </div>
+</section>

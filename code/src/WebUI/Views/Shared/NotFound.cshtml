@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "404";
+}
+
+<div id="message-container" class="row">
+    <div class="col-12 text-primary fw-bolder text-center align-self-center">
+        <h1>
+            4<i class="fas fa-question-circle"></i>4
+        </h1>
+        <h2 class="mb-md-5">
+            Lo sentimos, no se pudo encontrar el contenido que está buscando.
+        </h2>
+        <h4 class="mb-md-5">
+            <a class="btn btn-primary btn-lg active" role="button" asp-controller="Home" asp-action="Index">
+                Volver al Inicio
+            </a>
+            <a href="javascript:history.back()" class="btn btn-primary btn-lg active" role="button">
+                Atrás
+            </a>
+        </h4>
+    </div>
+</div>
+@section Styles{
+    <style>
+        h1 {
+            font-size: 10rem;
+        }
+
+        #message-container {
+            min-height: 720px;
+        }
+    </style>
+}

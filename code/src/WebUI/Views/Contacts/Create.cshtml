@@ -1,0 +1,41 @@
+﻿@using Application.Contacts.Commands
+@model CreateContactCommand
+
+@{
+    ViewData["Title"] = "Crear nuevo contacto";
+    <h4>Nuevo contacto</h4>
+}
+<hr />
+<form asp-action="Create">
+    <div class="row">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
